@@ -155,7 +155,8 @@ const BarcodeScannerDialog = ({ open, onOpenChange, onScanSuccess }) => {
 
     } catch (err) {
       console.error("خطأ في تشغيل المسح:", err);
-      setError(`خطأ في تشغيل قارئ الباركود: ${err.message}`);
+      const errorMessage = err?.message || err?.toString() || "خطأ غير معروف في الكاميرا";
+      setError(`خطأ في تشغيل قارئ الباركود: ${errorMessage}`);
       setIsScanning(false);
     }
   };
